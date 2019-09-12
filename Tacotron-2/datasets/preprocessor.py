@@ -131,7 +131,7 @@ def _process_utterance(mel_dir, linear_dir, wav_dir, wavfile , index, wav_path, 
     time_steps = len(out)
 
     # Write the spectrogram and audio to disk
-    audio_filename = 'audio-{}.npy'.format(wavfile)
+    audio_filename = '{}.npy'.format(wavfile)
     mel_filename = 'mel-{}.npy'.format(wavfile)
     linear_filename = 'linear-{}.npy'.format(wavfile)
 
