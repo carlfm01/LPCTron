@@ -69,4 +69,25 @@ class Synthesizer:
         print(npy_data)
         npy_data.tofile("f32_for_lpcnet.f32")
 
+
+
+        if log_dir is not None:
+            #save wav (mel -> wav)
+            wav = audio.inv_mel_spectrogram(mels.T, hparams)
+            audio.save_wav(wav, os.path.join(log_dir, 'wavs/speech-wav-{:05d}-mel.wav'.format(index)), sr=hparams.sample_rate)
+
+            if hparams.predict_linear:
+                #save wav (linear -> wav)
+                wav = audio.inv_linear_spectrogram(linear.T, hparams)
+                audio.save_wav(wav, os.path.join(log_dir, 'wavs/speech-wav-{:05d}-linear.wav'.format(index)), sr=hparams.sample_rate)
+
+            #save alignments
+            plot.plot_alignment(alignment, os.path.join(log_dir, 'plots/speech-alignment-{:05d}.png'.format(index)),
+                info='{}'.format(text), split_title=True)
+
+            #save mel spectrogram plot
+            plot.plot_spectrogram(mels, os.path.join(log_dir, 'plots/speech-mel-{:05d}.png'.format(index)),
+                info='{}'.format(text), split_title=True)
+
+
         return
