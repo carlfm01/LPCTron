@@ -73,8 +73,8 @@ class Synthesizer:
 
         if log_dir is not None:
             #save wav (mel -> wav)
-            wav = audio.inv_mel_spectrogram(mels.T, hparams)
-            audio.save_wav(wav, os.path.join(log_dir, 'wavs/speech-wav-{:05d}-mel.wav'.format(index)), sr=hparams.sample_rate)
+            #wav = audio.inv_mel_spectrogram(mels.T, hparams)
+            #audio.save_wav(wav, os.path.join(log_dir, 'wavs/speech-wav-{:05d}-mel.wav'.format(index)), sr=hparams.sample_rate)
 
             if hparams.predict_linear:
                 #save wav (linear -> wav)

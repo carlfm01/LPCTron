@@ -229,7 +229,7 @@ def train(log_dir, args, hparams):
 
                     log('Saving eval log to {}..'.format(eval_dir))
                     #Save some log to monitor model improvement on same unseen sequence
-                    wav = audio.inv_mel_spectrogram(mel_p.T, hparams)
+                    #wav = audio.inv_mel_spectrogram(mel_p.T, hparams)
                     #audio.save_wav(wav, os.path.join(eval_wav_dir, 'step-{}-eval-waveform-mel.wav'.format(step)), sr=hparams.sample_rate)
 
                     plot.plot_alignment(align, os.path.join(eval_plot_dir, 'step-{}-eval-align.png'.format(step)),
@@ -280,8 +280,8 @@ def train(log_dir, args, hparams):
                     np.save(os.path.join(mel_dir, mel_filename), mel_prediction.T, allow_pickle=False)
 
                     #save griffin lim inverted wav for debug (mel -> wav)
-                    wav = audio.inv_mel_spectrogram(mel_prediction.T, hparams)
-                    audio.save_wav(wav, os.path.join(wav_dir, 'step-{}-wave-from-mel.wav'.format(step)), sr=hparams.sample_rate)
+                    #wav = audio.inv_mel_spectrogram(mel_prediction.T, hparams)
+                    #audio.save_wav(wav, os.path.join(wav_dir, 'step-{}-wave-from-mel.wav'.format(step)), sr=hparams.sample_rate)
 
                     #save alignment plot to disk (control purposes)
                     plot.plot_alignment(alignment, os.path.join(plot_dir, 'step-{}-align.png'.format(step)),
